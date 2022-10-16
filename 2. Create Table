@@ -1,5 +1,5 @@
 import mysql.connector
-mydb= mysql.connector.connect(host="localhost",user="root",passwd="shail patel 147",database="quiz_program")
+mydb= mysql.connector.connect(host="localhost",user="root",passwd="****",database="quiz_program")
 mycursor=mydb.cursor()
 mycursor.execute("create table questions(question_number int(3) primary key , question varchar(100),option_a varchar(30), option_b varchar(30), option_c varchar(30) ,option_d varchar(30) , answer varchar(30))")
 mycursor.execute("create table participants(id int(5) primary key, name varchar(50) ,age int(10),city varchar(50),no_of_appearances int(10))")
