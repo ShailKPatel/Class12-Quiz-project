@@ -1,5 +1,7 @@
 import mysql.connector
 
-mydb = mysql.connector.connect(host="localhost",user="root",password="****")
+mydb = mysql.connector.connect(host="localhost",user="root",password="shail patel 147")
 mycursor = mydb.cursor()
 mycursor.execute("CREATE DATABASE quiz_program")
+
+print("Database created!")
