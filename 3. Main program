@@ -5,49 +5,69 @@ mycursor=mydb.cursor()
 print("QUIZ SOFTWARE")
 print("1.Press 1 to enter questions")
 print("2.Press 2 to enter participants")
-print("4.Press 3 to display question bank")
-print("5.Press 4 to display participant list")
+print("3.Press 3 to update scores")
+print("4.Press 4 to display question bank")
+print("5.Press 5 to display participant list")
+print("6.Press 6 to display participant scores")
 
-choice=int(input("Enter your choice:"))
+choice=int(input("Enter your choice :"))
 if choice==1:
-    sql=int(input("enter the index_no:"))
-    sql1=input("Enter the ques_desc:")
-    sql2=input("Enter the option a:")
-    sql3=input("Enter the option b:")
-    sql4=input("Enter the option c:")
-    sql5=input("Enter the option d:")
-    sql6=input("The answer is:")
+    sql=int(input("Enter the index number :"))
+    sql1=input("Enter the question :")
+    sql2=input("Enter the option a :")
+    sql3=input("Enter the option b :")
+    sql4=input("Enter the option c :")
+    sql5=input("Enter the option d :")
+    sql6=input("The answer is :")
 
     sql_in1= "insert into questions values(" + str( sql) + ",'" + (sql1)+ "'"+",'" + (sql2) + "'"+",'" + (sql3) +"'" +",'"+ (sql4) +"'"+",'" + (sql5) +"'"+ ",'"+(sql6) +"'"")"
     mycursor.execute(sql_in1)
     mydb.commit()
     print("Your request has been processed.")
-   
+
 if choice==2:
-    sql6=int(input("Enter the participant reg_no:"))
-    sql7=input("Enter the participant name:")
-    sql8=int(input("Enter the age group:"))
-    sql9=input("Enter the city:")
-    sql10=int(input("Enter the no of appearances made:"))
-     
+    sql6=int(input("Enter the participant registration number :"))
+    sql7=input("Enter the participant name :")
+    sql8=int(input("Enter the age group :"))
+    sql9=input("Enter the city :")
+    sql10=int(input("Enter the no of appearances made :"))
+
 #here sql_in is a name                                                              
     sql_in2="insert into participants values("+ str(sql6)+ ",'" + (sql7) + "'" + ",'"+str(sql8) + "'" + ",'"+(sql9) +"'"+ ",'"+str(sql10)+"'"")"
     mycursor.execute(sql_in2)
     mydb.commit()
     print("Your request has been processed.")
     
-    
 if choice==3:
-    mycursor.execute("SELECT * FROM questions")
-    data1=mycursor.fetchall()
-    #I could directlt use print data but using for function each question will be 
-    #printed in diffrent line
-    for i in data1:
-       print(i)
+    a=int(input("Enter the registration number :"))
+    b=input("Enter the participant name :")
+    c=int(input("Enter the score :"))
+    d=int(input("Enter the total correct answer :"))
+    e=int(input("Enter the incorrect answer :"))
+    f=int(input("Enter the no_of_attempted_questions :"))
+
+    sql_insert="insert into scores values("+ str(a) +",'"+ (b) +"'"+",'"+ str(c)+"'"+",'"+ str(d) +"'"+ ",'"+str(e) +"'"+",'"+ str(f)+ "'"")"
+    print("Your request has been processed.")
+    mycursor.execute(sql_insert)
+    mydb.commit()
+
+
 if choice==4:
-    mycursor.execute("SELECT * FROM participants")
-    data2=mycursor.fetchall()
+    mycursor.execute("SELECT * FROM questions")
+    data=mycursor.fetchall()
     #I could directlt use print data but using for function each question will be 
     #printed in diffrent line
-    for i in data2:
+    for i in data:
+       print(i)
+       
+if choice==5:
+    mycursor.execute("SELECT * FROM participants")
+    data=mycursor.fetchall()
+    for i in data:
+       print(i)
+
+if choice==6:
+    mycursor.execute("SELECT * FROM scores")
+    data=mycursor.fetchall()
+    for i in data:
        print(i)
